@@ -1,0 +1,26 @@
+                                            XXXXXX                                            
+                                                                    制表时间 Creation Date：20201022
+----------------------------------------------------------------------------------------------------
+                             交易结算单(盯市) XXXX                            
+客户号 Client ID：  00000000         客户名称 Client Name：xxxx有限公司
+日期 Date：20201022
+
+
+
+                   资金状况  币种：人民币  Account Summary  Currency：CNY 
+----------------------------------------------------------------------------------------------------
+期初结存 Balance b/f：                  4068195.32  基础保证金 Initial Margin：                 0.00
+出 入 金 Deposit/Withdrawal：                 0.00  期末结存 Balance c/f：                4067895.32
+平仓盈亏 Realized P/L：                       0.00  质 押 金 Pledge Amount：                    0.00
+持仓盯市盈亏 MTM P/L：                     -300.00  客户权益 Client Equity：：            4067895.32
+期权执行盈亏 Exercise P/L：                   0.00  货币质押保证金占用 FX Pledge Occ.：         0.00
+手 续 费 Commission：                         0.00  保证金占用 Margin Occupied：           699708.00
+行权手续费 Exercise Fee：                     0.00  交割保证金 Delivery Margin：                0.00
+交割手续费 Delivery Fee：                     0.00  多头期权市值 Market value(long)：           0.00
+货币质入 New FX Pledge：                      0.00  空头期权市值 Market value(short)：          0.00
+货币质出 FX Redemption：                      0.00  市值权益 Market value(equity)：       4067895.32
+质押变化金额 Chg in Pledge Amt：              0.00  可用资金 Fund Avail.：                3368187.32
+权利金收入 Premium received：                 0.00  风 险 度 Risk Degree：                    17.20%
+权利金支出 Premium paid：                     0.00  应追加资金 Margin Call：                    0.00
+
+                                              持仓明细 Positions Detail
