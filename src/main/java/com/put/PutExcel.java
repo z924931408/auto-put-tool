@@ -31,6 +31,7 @@ public class PutExcel {
                 String lineTxt = null;
 
                 while(true) {
+
                     do {
                         if ((lineTxt = bufferedReader.readLine()) == null) {
                             read.close();
@@ -38,54 +39,48 @@ public class PutExcel {
                         }
                     } while(!lineTxt.contains("持仓保证金:") && !lineTxt.contains("保证金占用:") && !lineTxt.contains("保证金占用 Margin Occupied：") && !lineTxt.contains("保证金占用 Margin Occupied:"));
 
-                    String ZiJin;
-                    int a;
-                    String b;
-                    int c;
-                    String d;
-                    int e;
-                    int f;
-                    String E;
+                    String capital;
+
+                    //目标字符
+                    String targetStr;
+                    //目标字符key-value
+                    String keyValue;
+                    //目标字符的value
+                    int value;
                     if (lineTxt.contains("持仓保证金:")) {
-                        ZiJin = lineTxt.replace(" ", "");
-                        a = ZiJin.indexOf("持");
-                        b = ZiJin.substring(a);
-                        c = b.indexOf(".");
-                        d = b.substring(0, c + 3);
-                        e = d.indexOf(":");
-                        f = d.length();
-                        E = d.substring(e + 1, f);
-                        list.add(E);
+                        capital = lineTxt.replace(" ", "");
+                        //找到"持仓保证金"一行的字符
+                        targetStr = capital.substring(capital.indexOf("持"));
+                        //截取字符"持仓保证金：    0.00"
+                        keyValue = targetStr.substring(0, targetStr.indexOf(".") + 3);
+                        //获取金额字符
+                        value = keyValue.indexOf(":");
+                        //截取"持仓保证金"的金额
+                        list.add(keyValue.substring(value + 1, keyValue.length()));
                     } else if (lineTxt.contains("保证金占用:")) {
-                        ZiJin = lineTxt.replace(" ", "");
-                        a = ZiJin.indexOf("保");
-                        b = ZiJin.substring(a);
-                        c = b.indexOf(".");
-                        d = b.substring(0, c + 3);
-                        e = d.indexOf(":");
-                        f = d.length();
-                        E = d.substring(e + 1, f);
-                        list.add(E);
+
+                        capital = lineTxt.replace(" ", "");
+                        targetStr = capital.substring(capital.indexOf("保"));
+                        keyValue = targetStr.substring(0, targetStr.indexOf(".") + 3);
+                        value = keyValue.indexOf(":");
+                        list.add(keyValue.substring(value + 1, keyValue.length()));
+
                     } else if (lineTxt.contains("保证金占用 Margin Occupied：")) {
-                        ZiJin = lineTxt.replace(" ", "");
-                        a = ZiJin.indexOf("保");
-                        b = ZiJin.substring(a);
-                        c = b.indexOf(".");
-                        d = b.substring(0, c + 3);
-                        e = d.indexOf("：");
-                        f = d.length();
-                        E = d.substring(e + 1, f);
-                        list.add(E);
+
+                        capital = lineTxt.replace(" ", "");
+                        targetStr = capital.substring(capital.indexOf("保"));
+                        keyValue = targetStr.substring(0, targetStr.indexOf(".") + 3);
+                        value = keyValue.indexOf("：");
+                        list.add(keyValue.substring(value + 1, keyValue.length()));
+
                     } else if (lineTxt.contains("保证金占用 Margin Occupied:")) {
-                        ZiJin = lineTxt.replace(" ", "");
-                        a = ZiJin.indexOf("保");
-                        b = ZiJin.substring(a);
-                        c = b.indexOf(".");
-                        d = b.substring(0, c + 3);
-                        e = d.indexOf(":");
-                        f = d.length();
-                        E = d.substring(e + 1, f);
-                        list.add(E);
+
+                        capital = lineTxt.replace(" ", "");
+                        targetStr = capital.substring(capital.indexOf("保"));
+                        keyValue = targetStr.substring(0, targetStr.indexOf(".") + 3);
+                        value = keyValue.indexOf(":");
+                        list.add(keyValue.substring(value + 1, keyValue.length()));
+
                     }
                 }
             } else {
@@ -119,47 +114,32 @@ public class PutExcel {
                         }
                     } while(!lineTxt.contains("可用资金:") && !lineTxt.contains("可用资金 Fund Avail.：") && !lineTxt.contains("可用资金 Fund Avail.:"));
 
-                    String ZiJin;
-                    int a;
-                    String b;
-                    int c;
-                    String d;
-                    int e;
-                    int f;
-                    String E;
+                    String capital;
+
+                    String targetStr;
+                    String keyValue;
+                    int value;
                     if (lineTxt.contains("可用资金:")) {
-                        ZiJin = lineTxt.replace(" ", "");
-                        ZiJin = lineTxt.replace(" ", "");
-                        a = ZiJin.indexOf("可");
-                        b = ZiJin.substring(a);
-                        c = b.indexOf(".");
-                        d = b.substring(0, c + 3);
-                        e = d.indexOf(":");
-                        f = d.length();
-                        E = d.substring(e + 1, f);
-                        list.add(E);
+                        capital = lineTxt.replace(" ", "");
+
+                        targetStr = capital.substring(capital.indexOf("可"));
+
+                        keyValue = targetStr.substring(0, targetStr.indexOf(".") + 3);
+                        value = keyValue.indexOf(":");
+                        list.add(keyValue.substring(value + 1, keyValue.length()));
                     } else if (lineTxt.contains("可用资金 Fund Avail.：")) {
-                        ZiJin = lineTxt.replace(" ", "");
-                        ZiJin = lineTxt.replace(" ", "");
-                        a = ZiJin.indexOf("可");
-                        b = ZiJin.substring(a);
-                        c = b.lastIndexOf(".");
-                        d = b.substring(0, c + 3);
-                        e = d.indexOf("：");
-                        f = d.length();
-                        E = d.substring(e + 1, f);
-                        list.add(E);
+                        capital = lineTxt.replace(" ", "");
+
+                        targetStr = capital.substring(capital.indexOf("可"));
+                        keyValue = targetStr.substring(0, targetStr.lastIndexOf(".") + 3);
+                        value = keyValue.indexOf("：");
+                        list.add(keyValue.substring(value + 1, keyValue.length()));
                     } else if (lineTxt.contains("可用资金 Fund Avail.:")) {
-                        lineTxt.replace(" ", "");
-                        ZiJin = lineTxt.replace(" ", "");
-                        a = ZiJin.indexOf("可");
-                        b = ZiJin.substring(a);
-                        c = b.lastIndexOf(".");
-                        d = b.substring(0, c + 3);
-                        e = d.indexOf(":");
-                        f = d.length();
-                        E = d.substring(e + 1, f);
-                        list.add(E);
+                        capital = lineTxt.replace(" ", "");
+                        targetStr = capital.substring(capital.indexOf("可"));
+                        keyValue = targetStr.substring(0, targetStr.lastIndexOf(".") + 3);
+                        value = keyValue.indexOf(":");
+                        list.add(keyValue.substring(value + 1, keyValue.length()));
                     }
                 }
             } else {
@@ -198,14 +178,9 @@ public class PutExcel {
         List<String> r2 = readTxtFile2(TxtName, address);
         int c = TxtName.indexOf(".");
         String txt = TxtName.substring(0, c);
-        System.out.println(txt);
-        System.out.println(r1);
         Datas d = null;
         if (r1.isEmpty() && r2.isEmpty()) {
-            if (r1.isEmpty() && r2.isEmpty()) {
-                System.out.println(txt + "--" + r1 + "---" + r2);
-                d = new Datas(txt, "无", "无");
-            }
+            d = new Datas(txt, "无", "无");
         } else {
             d = new Datas(txt, r1.get(0), r2.get(0));
         }
