@@ -22,7 +22,7 @@ public class PutExcel {
         ArrayList list = new ArrayList();
 
         try {
-            
+
             File file = new File(filePath);
             if (file.isFile() && file.exists()) {
                 InputStreamReader read = new InputStreamReader(new FileInputStream(file), "GBK");
@@ -150,6 +150,20 @@ public class PutExcel {
         }
 
         return list;
+    }
+
+
+
+    public String getValue(String lineTxt,){
+        String capital = lineTxt.replace(" ", "");
+        //找到"持仓保证金"一行的字符
+        String targetStr = capital.substring(capital.indexOf("持"));
+        //截取字符"持仓保证金：    0.00"
+        String keyValue = targetStr.substring(0, targetStr.indexOf(".") + 3);
+        //获取金额字符
+        int value = keyValue.indexOf(":");
+        //截取"持仓保证金"的金额
+        return keyValue.substring(value + 1, keyValue.length());
     }
 
     public static void main(String[] argv) {
