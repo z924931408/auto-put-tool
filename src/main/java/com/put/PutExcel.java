@@ -22,8 +22,7 @@ public class PutExcel {
         ArrayList list = new ArrayList();
 
         try {
-
-            System.out.println("该组合：" + TxtName);
+            
             File file = new File(filePath);
             if (file.isFile() && file.exists()) {
                 InputStreamReader read = new InputStreamReader(new FileInputStream(file), "GBK");
