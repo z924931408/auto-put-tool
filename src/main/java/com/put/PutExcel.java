@@ -47,38 +47,9 @@ public class PutExcel {
                     //目标字符的value
                     int value;
                     if (lineTxt.contains("持仓保证金:")) {
-                        capital = lineTxt.replace(" ", "");
-                        //找到"持仓保证金"一行的字符
-                        targetStr = capital.substring(capital.indexOf("持"));
-                        //截取字符"持仓保证金：    0.00"
-                        keyValue = targetStr.substring(0, targetStr.indexOf(".") + 3);
-                        //获取金额字符
-                        value = keyValue.indexOf(":");
-                        //截取"持仓保证金"的金额
-                        list.add(keyValue.substring(value + 1, keyValue.length()));
-                    } else if (lineTxt.contains("保证金占用:")) {
-
-                        capital = lineTxt.replace(" ", "");
-                        targetStr = capital.substring(capital.indexOf("保"));
-                        keyValue = targetStr.substring(0, targetStr.indexOf(".") + 3);
-                        value = keyValue.indexOf(":");
-                        list.add(keyValue.substring(value + 1, keyValue.length()));
-
-                    } else if (lineTxt.contains("保证金占用 Margin Occupied：")) {
-
-                        capital = lineTxt.replace(" ", "");
-                        targetStr = capital.substring(capital.indexOf("保"));
-                        keyValue = targetStr.substring(0, targetStr.indexOf(".") + 3);
-                        value = keyValue.indexOf("：");
-                        list.add(keyValue.substring(value + 1, keyValue.length()));
-
-                    } else if (lineTxt.contains("保证金占用 Margin Occupied:")) {
-
-                        capital = lineTxt.replace(" ", "");
-                        targetStr = capital.substring(capital.indexOf("保"));
-                        keyValue = targetStr.substring(0, targetStr.indexOf(".") + 3);
-                        value = keyValue.indexOf(":");
-                        list.add(keyValue.substring(value + 1, keyValue.length()));
+                        list.add(getValue(lineTxt,"持"));
+                    } else if (lineTxt.contains("保证金占用:")||lineTxt.contains("保证金占用 Margin Occupied：")||lineTxt.contains("保证金占用 Margin Occupied:")) {
+                        list.add(getValue(lineTxt,"保"));
 
                     }
                 }
@@ -154,10 +125,10 @@ public class PutExcel {
 
 
 
-    public String getValue(String lineTxt,){
+    public static String getValue(String lineTxt,String start){
         String capital = lineTxt.replace(" ", "");
         //找到"持仓保证金"一行的字符
-        String targetStr = capital.substring(capital.indexOf("持"));
+        String targetStr = capital.substring(capital.indexOf(start));
         //截取字符"持仓保证金：    0.00"
         String keyValue = targetStr.substring(0, targetStr.indexOf(".") + 3);
         //获取金额字符
