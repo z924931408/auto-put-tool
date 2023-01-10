@@ -90,13 +90,8 @@ public class PutExcel {
                     String keyValue;
                     int value;
                     if (lineTxt.contains("可用资金:")) {
-                        capital = lineTxt.replace(" ", "");
-
-                        targetStr = capital.substring(capital.indexOf("可"));
-
-                        keyValue = targetStr.substring(0, targetStr.indexOf(".") + 3);
-                        value = keyValue.indexOf(":");
-                        list.add(keyValue.substring(value + 1, keyValue.length()));
+                        list.add(getValue(lineTxt,"可"));
+                       
                     } else if (lineTxt.contains("可用资金 Fund Avail.：")) {
                         capital = lineTxt.replace(" ", "");
 
